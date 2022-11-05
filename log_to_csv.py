@@ -26,6 +26,6 @@ new_cols = format_row(cols, column_names=True)
 data = list(map(partial(format_row, column_names=False), rows)) # use partial to pass arguments to mapping function
 df = pd.DataFrame(data, columns=new_cols)
 
-df.drop(['x1 btn', 'x2 btn'], inplace=True, axis=1) # can't get useful data from these
+df.drop(utils.drop_columns, inplace=True, axis=1) # can't get useful data from these
 df.rename(utils.rename_dict, inplace=True, axis=1)
 df.to_csv('mousotron_data.csv', index=False)

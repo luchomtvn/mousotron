@@ -32,3 +32,21 @@ rename_dict = {
     'wheel': 'Wheel turn',
     'idle days hour min sec': 'Idle time'
 }
+
+drop_columns = ['x1 btn', 'x2 btn']
+
+
+month_es_to_en = {
+    "Ene": "Jan",
+    "Feb": "Feb",
+    "Mar": "Mar",
+    "Abr": "Apr",
+    "May": "May",
+    "Jun": "Jun",
+    "Jul": "Jul",
+    "Ago": "Aug",
+    "Sep": "Sep",
+    "Oct": "Oct",
+    "Nov": "Nov",
+    "Dic": "Dec"
+}
