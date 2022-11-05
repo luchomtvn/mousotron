@@ -21,6 +21,8 @@ def get_seconds(time):
             mult = 60*60
         if i == 2:
             mult = 60
+        elif i == 3:
+            mult = 1
 
         numbers[i] = numbers[i]*mult
     return reduce(lambda x, y: x+y, numbers)
