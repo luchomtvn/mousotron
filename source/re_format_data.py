@@ -1,4 +1,4 @@
-import utils
+import source.utils as utils
 import datetime
 from functools import reduce
 from datetime import datetime
@@ -41,13 +41,12 @@ def get_cents(time):
         numbers[i] = numbers[i]*mult
     return reduce(lambda x, y: x+y, numbers)
 
-df = pd.read_csv("mousotron_data.csv")
-
-df['Date'] = df['Date'].apply(format_date)
-df['Distance'] = df['Distance'].apply(get_cents)
-df['Active time'] = df['Active time'].apply(get_seconds)
-df['Idle time'] = df['Idle time'].apply(get_seconds)
-
-df = df.astype({'Keystrokes': 'int64', 'Left clicks': 'int64', 'Right clicks': 'int64', 'Middle clicks': 'int64', 'Double clicks': 'int64', 'Wheel turn': 'int64'})
-
-df.to_csv("mousotron_data_formated.csv", index=False)
+def format_row(row, column_names=False):
+    i_line = 0
+    new_row = []
+    spaces_idx = 0 if column_names else 1
+    for col_spaces in utils.spaces:
+        slice_range = col_spaces[spaces_idx] + 1
+        new_row.append(" ".join(row[i_line:slice_range + i_line]))
+        i_line += slice_range
+    return new_row
