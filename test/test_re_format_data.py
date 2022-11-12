@@ -11,8 +11,12 @@ logger.setLevel(logging.INFO)
 
 class TestCommon(unittest.TestCase):
     def test_get_seconds(self):
-        self.assertTrue(True)
-        warnings.warn("test not defined")
+        self.assertEqual(get_seconds('0 days 0 hours 0 min 1 sec'), 1)
+        self.assertEqual(get_seconds('0 days 0 hours 1 min 0 sec'), 60)
+        self.assertEqual(get_seconds('0 days 1 hours 0 min 0 sec'), 3600)
+        self.assertEqual(get_seconds('1 days 0 hours 0 min 0 sec'), 86400)
+        self.assertEqual(get_seconds('1 days 0 hours 0 min 50 sec'), 86450)
+        self.assertEqual(get_seconds('1 days 1 hours 0 min 0 sec'), 90000)
     def test_get_cents(self):
         self.assertTrue(True)
         warnings.warn("test not defined")
